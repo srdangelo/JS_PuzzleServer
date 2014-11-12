@@ -385,6 +385,11 @@ var $$ = {};
         return H.ioore(receiver, index);
       return receiver[index];
     },
+    get$first: function(receiver) {
+      if (receiver.length > 0)
+        return receiver[0];
+      throw H.wrapException(P.StateError$("No elements"));
+    },
     contains$1: function(receiver, other) {
       var i;
       for (i = 0; i < receiver.length; ++i)
@@ -6272,7 +6277,7 @@ var $$ = {};
   },
   HtmlElement: {
     "^": "Element;",
-    "%": "HTMLAppletElement|HTMLBRElement|HTMLBaseElement|HTMLButtonElement|HTMLContentElement|HTMLDListElement|HTMLDataListElement|HTMLDetailsElement|HTMLDialogElement|HTMLDirectoryElement|HTMLDivElement|HTMLFieldSetElement|HTMLFontElement|HTMLFrameElement|HTMLHRElement|HTMLHeadElement|HTMLHeadingElement|HTMLHtmlElement|HTMLKeygenElement|HTMLLIElement|HTMLLabelElement|HTMLLegendElement|HTMLLinkElement|HTMLMapElement|HTMLMarqueeElement|HTMLMenuElement|HTMLMetaElement|HTMLMeterElement|HTMLModElement|HTMLOListElement|HTMLOptGroupElement|HTMLOptionElement|HTMLOutputElement|HTMLParagraphElement|HTMLParamElement|HTMLPreElement|HTMLProgressElement|HTMLQuoteElement|HTMLShadowElement|HTMLSpanElement|HTMLStyleElement|HTMLTableCaptionElement|HTMLTableCellElement|HTMLTableColElement|HTMLTableDataCellElement|HTMLTableElement|HTMLTableHeaderCellElement|HTMLTableRowElement|HTMLTableSectionElement|HTMLTemplateElement|HTMLTextAreaElement|HTMLTitleElement|HTMLUListElement|HTMLUnknownElement;HTMLElement"
+    "%": "HTMLAppletElement|HTMLBRElement|HTMLBaseElement|HTMLButtonElement|HTMLContentElement|HTMLDListElement|HTMLDataListElement|HTMLDetailsElement|HTMLDialogElement|HTMLDirectoryElement|HTMLDivElement|HTMLFieldSetElement|HTMLFontElement|HTMLFrameElement|HTMLHeadElement|HTMLHeadingElement|HTMLHtmlElement|HTMLKeygenElement|HTMLLIElement|HTMLLabelElement|HTMLLegendElement|HTMLLinkElement|HTMLMapElement|HTMLMarqueeElement|HTMLMenuElement|HTMLMetaElement|HTMLMeterElement|HTMLModElement|HTMLOListElement|HTMLOptGroupElement|HTMLOptionElement|HTMLOutputElement|HTMLParagraphElement|HTMLParamElement|HTMLPreElement|HTMLProgressElement|HTMLQuoteElement|HTMLShadowElement|HTMLSpanElement|HTMLStyleElement|HTMLTableCaptionElement|HTMLTableCellElement|HTMLTableColElement|HTMLTableDataCellElement|HTMLTableElement|HTMLTableHeaderCellElement|HTMLTableRowElement|HTMLTableSectionElement|HTMLTemplateElement|HTMLTextAreaElement|HTMLTitleElement|HTMLUListElement|HTMLUnknownElement;HTMLElement"
   },
   AnchorElement: {
     "^": "HtmlElement;",
@@ -6395,6 +6400,10 @@ var $$ = {};
   FormElement: {
     "^": "HtmlElement;length=",
     "%": "HTMLFormElement"
+  },
+  HRElement: {
+    "^": "HtmlElement;color=",
+    "%": "HTMLHRElement"
   },
   IFrameElement: {
     "^": "HtmlElement;height=,src},width=",
@@ -6632,75 +6641,83 @@ var $$ = {};
 ["dart.dom.svg", "dart:svg", , P, {
   "^": "",
   FEBlendElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEBlendElement"
   },
   FEColorMatrixElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEColorMatrixElement"
   },
   FEComponentTransferElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEComponentTransferElement"
   },
   FECompositeElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFECompositeElement"
   },
   FEConvolveMatrixElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEConvolveMatrixElement"
   },
   FEDiffuseLightingElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEDiffuseLightingElement"
   },
   FEDisplacementMapElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEDisplacementMapElement"
   },
   FEFloodElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEFloodElement"
   },
   FEGaussianBlurElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEGaussianBlurElement"
   },
   FEImageElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEImageElement"
   },
   FEMergeElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEMergeElement"
   },
   FEMorphologyElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEMorphologyElement"
   },
   FEOffsetElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEOffsetElement"
   },
+  FEPointLightElement: {
+    "^": "SvgElement;x=,y=",
+    "%": "SVGFEPointLightElement"
+  },
   FESpecularLightingElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFESpecularLightingElement"
   },
+  FESpotLightElement: {
+    "^": "SvgElement;x=,y=",
+    "%": "SVGFESpotLightElement"
+  },
   FETileElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFETileElement"
   },
   FETurbulenceElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFETurbulenceElement"
   },
   FilterElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFilterElement"
   },
   ForeignObjectElement: {
-    "^": "GraphicsElement;height=,width=",
+    "^": "GraphicsElement;height=,width=,x=,y=",
     "%": "SVGForeignObjectElement"
   },
   GeometryElement: {
@@ -6709,22 +6726,22 @@ var $$ = {};
   },
   GraphicsElement: {
     "^": "SvgElement;",
-    "%": "SVGAElement|SVGAltGlyphElement|SVGClipPathElement|SVGDefsElement|SVGGElement|SVGSwitchElement|SVGTSpanElement|SVGTextContentElement|SVGTextElement|SVGTextPathElement|SVGTextPositioningElement;SVGGraphicsElement"
+    "%": "SVGAElement|SVGClipPathElement|SVGDefsElement|SVGGElement|SVGSwitchElement;SVGGraphicsElement"
   },
   ImageElement0: {
-    "^": "GraphicsElement;height=,width=",
+    "^": "GraphicsElement;height=,width=,x=,y=",
     "%": "SVGImageElement"
   },
   MaskElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGMaskElement"
   },
   PatternElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGPatternElement"
   },
   RectElement: {
-    "^": "GeometryElement;height=,width=",
+    "^": "GeometryElement;height=,width=,x=,y=",
     "%": "SVGRectElement"
   },
   SvgElement: {
@@ -6739,14 +6756,22 @@ var $$ = {};
       return H.setRuntimeTypeInfo(new W._ElementEventStreamImpl(receiver, C.EventStreamProvider_mouseup._eventType, false), [null]);
     },
     $isEventTarget: true,
-    "%": "SVGAltGlyphDefElement|SVGAltGlyphItemElement|SVGAnimateElement|SVGAnimateMotionElement|SVGAnimateTransformElement|SVGAnimationElement|SVGComponentTransferFunctionElement|SVGCursorElement|SVGDescElement|SVGDiscardElement|SVGFEDistantLightElement|SVGFEDropShadowElement|SVGFEFuncAElement|SVGFEFuncBElement|SVGFEFuncGElement|SVGFEFuncRElement|SVGFEMergeNodeElement|SVGFEPointLightElement|SVGFESpotLightElement|SVGFontElement|SVGFontFaceElement|SVGFontFaceFormatElement|SVGFontFaceNameElement|SVGFontFaceSrcElement|SVGFontFaceUriElement|SVGGlyphElement|SVGGlyphRefElement|SVGGradientElement|SVGHKernElement|SVGLinearGradientElement|SVGMPathElement|SVGMarkerElement|SVGMetadataElement|SVGMissingGlyphElement|SVGRadialGradientElement|SVGScriptElement|SVGSetElement|SVGStopElement|SVGStyleElement|SVGSymbolElement|SVGTitleElement|SVGVKernElement|SVGViewElement;SVGElement"
+    "%": "SVGAltGlyphDefElement|SVGAltGlyphItemElement|SVGAnimateElement|SVGAnimateMotionElement|SVGAnimateTransformElement|SVGAnimationElement|SVGComponentTransferFunctionElement|SVGCursorElement|SVGDescElement|SVGDiscardElement|SVGFEDistantLightElement|SVGFEDropShadowElement|SVGFEFuncAElement|SVGFEFuncBElement|SVGFEFuncGElement|SVGFEFuncRElement|SVGFEMergeNodeElement|SVGFontElement|SVGFontFaceElement|SVGFontFaceFormatElement|SVGFontFaceNameElement|SVGFontFaceSrcElement|SVGFontFaceUriElement|SVGGlyphElement|SVGGlyphRefElement|SVGGradientElement|SVGHKernElement|SVGLinearGradientElement|SVGMPathElement|SVGMarkerElement|SVGMetadataElement|SVGMissingGlyphElement|SVGRadialGradientElement|SVGScriptElement|SVGSetElement|SVGStopElement|SVGStyleElement|SVGSymbolElement|SVGTitleElement|SVGVKernElement|SVGViewElement;SVGElement"
   },
   SvgSvgElement: {
-    "^": "GraphicsElement;height=,width=",
+    "^": "GraphicsElement;height=,width=,x=,y=",
     "%": "SVGSVGElement"
   },
+  TextContentElement: {
+    "^": "GraphicsElement;",
+    "%": "SVGTextPathElement;SVGTextContentElement"
+  },
+  TextPositioningElement: {
+    "^": "TextContentElement;x=,y=",
+    "%": "SVGAltGlyphElement|SVGTSpanElement|SVGTextElement|SVGTextPositioningElement"
+  },
   UseElement: {
-    "^": "GraphicsElement;height=,width=",
+    "^": "GraphicsElement;height=,width=,x=,y=",
     "%": "SVGUseElement"
   }
 }],
@@ -7303,7 +7328,7 @@ var $$ = {};
     }
   },
   Box: {
-    "^": "Object;x',y,color,id>,dragged,img,rightBuddy,leftBuddy,upperBuddy,lowerBuddy,leftNeighbor,rightNeighbor,upperNeighbor,lowerNeighbor,dragTimer",
+    "^": "Object;x*,y>,color>,id>,dragged,img,rightBuddy,leftBuddy,upperBuddy,lowerBuddy,leftNeighbor?,rightNeighbor?,upperNeighbor?,lowerNeighbor?,dragTimer",
     containsTouch$1: function(e) {
       var t1, t2;
       t1 = e.touchX;
@@ -7347,39 +7372,39 @@ var $$ = {};
       this.dragged = false;
       t1 = this.rightBuddy;
       if (t1 != null)
-        if (J.$ge$n(J.$add$ns(t1.x, 10), this.x) && J.$ge$n(J.$add$ns(this.rightBuddy.y, 10), this.y) && J.$le$n(J.$add$ns(this.rightBuddy.x, 10), J.$add$ns(this.x, 20)) && J.$le$n(J.$add$ns(this.rightBuddy.y, 10), J.$add$ns(this.y, 20))) {
+        if (J.$ge$n(J.$add$ns(J.get$x$x(t1), 10), this.x) && J.$ge$n(J.$add$ns(J.get$y$x(this.rightBuddy), 10), this.y) && J.$le$n(J.$add$ns(J.get$x$x(this.rightBuddy), 10), J.$add$ns(this.x, 20)) && J.$le$n(J.$add$ns(J.get$y$x(this.rightBuddy), 10), J.$add$ns(this.y, 20))) {
           t1 = this.rightBuddy;
           this.rightNeighbor = t1;
-          t1.leftNeighbor = this;
+          t1.set$leftNeighbor(this);
           P.print("neighbors!");
-          $.ws.send("n:" + H.S(this.id) + ",right," + H.S(this.rightNeighbor.id));
+          $.ws.send("n:" + H.S(this.id) + ",right," + H.S(J.get$id$x(this.rightNeighbor)));
         }
       t1 = this.leftBuddy;
       if (t1 != null)
-        if (J.$ge$n(J.$add$ns(t1.x, 10), this.x) && J.$ge$n(J.$add$ns(this.leftBuddy.y, 10), this.y) && J.$le$n(J.$add$ns(this.leftBuddy.x, 10), J.$add$ns(this.x, 20)) && J.$le$n(J.$add$ns(this.leftBuddy.y, 10), J.$add$ns(this.y, 20))) {
+        if (J.$ge$n(J.$add$ns(J.get$x$x(t1), 10), this.x) && J.$ge$n(J.$add$ns(J.get$y$x(this.leftBuddy), 10), this.y) && J.$le$n(J.$add$ns(J.get$x$x(this.leftBuddy), 10), J.$add$ns(this.x, 20)) && J.$le$n(J.$add$ns(J.get$y$x(this.leftBuddy), 10), J.$add$ns(this.y, 20))) {
           t1 = this.leftBuddy;
           this.leftNeighbor = t1;
-          t1.rightNeighbor = this;
+          t1.set$rightNeighbor(this);
           P.print("neighbors!");
-          $.ws.send("n:" + H.S(this.id) + ",left," + H.S(this.leftNeighbor.id));
+          $.ws.send("n:" + H.S(this.id) + ",left," + H.S(J.get$id$x(this.leftNeighbor)));
         }
       t1 = this.upperBuddy;
       if (t1 != null)
-        if (J.$ge$n(J.$add$ns(t1.x, 10), this.x) && J.$ge$n(J.$add$ns(this.upperBuddy.y, 10), this.y) && J.$le$n(J.$add$ns(this.upperBuddy.x, 10), J.$add$ns(this.x, 20)) && J.$le$n(J.$add$ns(this.upperBuddy.y, 10), J.$add$ns(this.y, 20))) {
+        if (J.$ge$n(J.$add$ns(J.get$x$x(t1), 10), this.x) && J.$ge$n(J.$add$ns(J.get$y$x(this.upperBuddy), 10), this.y) && J.$le$n(J.$add$ns(J.get$x$x(this.upperBuddy), 10), J.$add$ns(this.x, 20)) && J.$le$n(J.$add$ns(J.get$y$x(this.upperBuddy), 10), J.$add$ns(this.y, 20))) {
           t1 = this.upperBuddy;
           this.upperNeighbor = t1;
-          t1.lowerNeighbor = this;
+          t1.set$lowerNeighbor(this);
           P.print("neighbors!");
-          $.ws.send("n:" + H.S(this.id) + ",upper," + H.S(this.upperNeighbor.id));
+          $.ws.send("n:" + H.S(this.id) + ",upper," + H.S(J.get$id$x(this.upperNeighbor)));
         }
       t1 = this.lowerBuddy;
       if (t1 != null)
-        if (J.$ge$n(J.$add$ns(t1.x, 10), this.x) && J.$ge$n(J.$add$ns(this.lowerBuddy.y, 10), this.y) && J.$le$n(J.$add$ns(this.lowerBuddy.x, 10), J.$add$ns(this.x, 20)) && J.$le$n(J.$add$ns(this.lowerBuddy.y, 10), J.$add$ns(this.y, 20))) {
+        if (J.$ge$n(J.$add$ns(J.get$x$x(t1), 10), this.x) && J.$ge$n(J.$add$ns(J.get$y$x(this.lowerBuddy), 10), this.y) && J.$le$n(J.$add$ns(J.get$x$x(this.lowerBuddy), 10), J.$add$ns(this.x, 20)) && J.$le$n(J.$add$ns(J.get$y$x(this.lowerBuddy), 10), J.$add$ns(this.y, 20))) {
           t1 = this.lowerBuddy;
           this.lowerNeighbor = t1;
-          t1.upperNeighbor = this;
+          t1.set$upperNeighbor(this);
           P.print("neighbors!");
-          $.ws.send("n:" + H.S(this.id) + ",lower," + H.S(this.lowerNeighbor.id));
+          $.ws.send("n:" + H.S(this.id) + ",lower," + H.S(J.get$id$x(this.lowerNeighbor)));
         }
       $.ws.send("b:" + H.S(this.id) + ", " + H.S(this.color) + ", " + H.S($.game.clientID));
     },
@@ -7392,7 +7417,7 @@ var $$ = {};
         t4 = $.ws;
         t5 = this.id;
         if (t3)
-          t4.send("d:" + H.S(t5) + "," + H.S(t1) + "," + H.S(t2) + "," + H.S(this.color) + "," + H.S(this.leftNeighbor.color) + "," + H.S(this.rightNeighbor.color) + ", Client#" + H.S($.game.clientID));
+          t4.send("d:" + H.S(t5) + "," + H.S(t1) + "," + H.S(t2) + "," + H.S(this.color) + "," + H.S(J.get$color$x(this.leftNeighbor)) + "," + H.S(J.get$color$x(this.rightNeighbor)) + ", Client#" + H.S($.game.clientID));
         else
           t4.send("d:" + H.S(t5) + "," + H.S(t1) + "," + H.S(t2) + "," + H.S(this.color) + ", Client#" + H.S($.game.clientID));
         P.print(e.touchX);
@@ -7527,7 +7552,7 @@ var $$ = {};
       J.set$textAlign$x(this.ctx, "left");
       J.set$textBaseline$x(this.ctx, "center");
       J.fillText$3$x(this.ctx, "Server/Client Attempt: Client# " + H.S(this.clientID) + " Trial# " + H.S(this.trialNum), 100, 50);
-      J.fillText$3$x(this.ctx, "Score: " + H.S(this.score), 100, 100);
+      J.fillText$3$x(this.ctx, "Score: " + H.S(this.score), J.get$x$x(C.JSArray_methods.get$first(this.myState.myBoxes)), 100);
       for (var t1 = this.myState.myBoxes, t1 = new H.ListIterator(t1, t1.length, 0, null); t1.moveNext$0();)
         t1._current.draw$1(this.ctx);
     },
@@ -8006,6 +8031,9 @@ J.fillText$3$x = function(receiver, a0, a1, a2) {
 J.forEach$1$ax = function(receiver, a0) {
   return J.getInterceptor$ax(receiver).forEach$1(receiver, a0);
 };
+J.get$color$x = function(receiver) {
+  return J.getInterceptor$x(receiver).get$color(receiver);
+};
 J.get$data$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$data(receiver);
 };
@@ -8017,6 +8045,9 @@ J.get$hashCode$ = function(receiver) {
 };
 J.get$height$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$height(receiver);
+};
+J.get$id$x = function(receiver) {
+  return J.getInterceptor$x(receiver).get$id(receiver);
 };
 J.get$iterator$ax = function(receiver) {
   return J.getInterceptor$ax(receiver).get$iterator(receiver);
@@ -8032,6 +8063,12 @@ J.get$topLeft$x = function(receiver) {
 };
 J.get$width$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$width(receiver);
+};
+J.get$x$x = function(receiver) {
+  return J.getInterceptor$x(receiver).get$x(receiver);
+};
+J.get$y$x = function(receiver) {
+  return J.getInterceptor$x(receiver).get$y(receiver);
 };
 J.getBoundingClientRect$0$x = function(receiver) {
   return J.getInterceptor$x(receiver).getBoundingClientRect$0(receiver);
@@ -9224,6 +9261,9 @@ function dart_precompiled($collectedClasses) {
   if ($desc instanceof Array)
     $desc = $desc[1];
   HRElement.prototype = $desc;
+  HRElement.prototype.get$color = function(receiver) {
+    return receiver.color;
+  };
   function HashChangeEvent() {
   }
   HashChangeEvent.builtin$cls = "HashChangeEvent";
@@ -10436,6 +10476,12 @@ function dart_precompiled($collectedClasses) {
   FEBlendElement.prototype.get$width = function(receiver) {
     return receiver.width;
   };
+  FEBlendElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  FEBlendElement.prototype.get$y = function(receiver) {
+    return receiver.y;
+  };
   function FEColorMatrixElement() {
   }
   FEColorMatrixElement.builtin$cls = "FEColorMatrixElement";
@@ -10450,6 +10496,12 @@ function dart_precompiled($collectedClasses) {
   };
   FEColorMatrixElement.prototype.get$width = function(receiver) {
     return receiver.width;
+  };
+  FEColorMatrixElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  FEColorMatrixElement.prototype.get$y = function(receiver) {
+    return receiver.y;
   };
   function FEComponentTransferElement() {
   }
@@ -10466,6 +10518,12 @@ function dart_precompiled($collectedClasses) {
   FEComponentTransferElement.prototype.get$width = function(receiver) {
     return receiver.width;
   };
+  FEComponentTransferElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  FEComponentTransferElement.prototype.get$y = function(receiver) {
+    return receiver.y;
+  };
   function FECompositeElement() {
   }
   FECompositeElement.builtin$cls = "FECompositeElement";
@@ -10480,6 +10538,12 @@ function dart_precompiled($collectedClasses) {
   };
   FECompositeElement.prototype.get$width = function(receiver) {
     return receiver.width;
+  };
+  FECompositeElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  FECompositeElement.prototype.get$y = function(receiver) {
+    return receiver.y;
   };
   function FEConvolveMatrixElement() {
   }
@@ -10496,6 +10560,12 @@ function dart_precompiled($collectedClasses) {
   FEConvolveMatrixElement.prototype.get$width = function(receiver) {
     return receiver.width;
   };
+  FEConvolveMatrixElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  FEConvolveMatrixElement.prototype.get$y = function(receiver) {
+    return receiver.y;
+  };
   function FEDiffuseLightingElement() {
   }
   FEDiffuseLightingElement.builtin$cls = "FEDiffuseLightingElement";
@@ -10511,6 +10581,12 @@ function dart_precompiled($collectedClasses) {
   FEDiffuseLightingElement.prototype.get$width = function(receiver) {
     return receiver.width;
   };
+  FEDiffuseLightingElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  FEDiffuseLightingElement.prototype.get$y = function(receiver) {
+    return receiver.y;
+  };
   function FEDisplacementMapElement() {
   }
   FEDisplacementMapElement.builtin$cls = "FEDisplacementMapElement";
@@ -10525,6 +10601,12 @@ function dart_precompiled($collectedClasses) {
   };
   FEDisplacementMapElement.prototype.get$width = function(receiver) {
     return receiver.width;
+  };
+  FEDisplacementMapElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  FEDisplacementMapElement.prototype.get$y = function(receiver) {
+    return receiver.y;
   };
   function FEDistantLightElement() {
   }
@@ -10549,6 +10631,12 @@ function dart_precompiled($collectedClasses) {
   };
   FEFloodElement.prototype.get$width = function(receiver) {
     return receiver.width;
+  };
+  FEFloodElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  FEFloodElement.prototype.get$y = function(receiver) {
+    return receiver.y;
   };
   function FEFuncAElement() {
   }
@@ -10601,6 +10689,12 @@ function dart_precompiled($collectedClasses) {
   FEGaussianBlurElement.prototype.get$width = function(receiver) {
     return receiver.width;
   };
+  FEGaussianBlurElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  FEGaussianBlurElement.prototype.get$y = function(receiver) {
+    return receiver.y;
+  };
   function FEImageElement() {
   }
   FEImageElement.builtin$cls = "FEImageElement";
@@ -10616,6 +10710,12 @@ function dart_precompiled($collectedClasses) {
   FEImageElement.prototype.get$width = function(receiver) {
     return receiver.width;
   };
+  FEImageElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  FEImageElement.prototype.get$y = function(receiver) {
+    return receiver.y;
+  };
   function FEMergeElement() {
   }
   FEMergeElement.builtin$cls = "FEMergeElement";
@@ -10630,6 +10730,12 @@ function dart_precompiled($collectedClasses) {
   };
   FEMergeElement.prototype.get$width = function(receiver) {
     return receiver.width;
+  };
+  FEMergeElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  FEMergeElement.prototype.get$y = function(receiver) {
+    return receiver.y;
   };
   function FEMergeNodeElement() {
   }
@@ -10655,6 +10761,12 @@ function dart_precompiled($collectedClasses) {
   FEMorphologyElement.prototype.get$width = function(receiver) {
     return receiver.width;
   };
+  FEMorphologyElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  FEMorphologyElement.prototype.get$y = function(receiver) {
+    return receiver.y;
+  };
   function FEOffsetElement() {
   }
   FEOffsetElement.builtin$cls = "FEOffsetElement";
@@ -10670,6 +10782,12 @@ function dart_precompiled($collectedClasses) {
   FEOffsetElement.prototype.get$width = function(receiver) {
     return receiver.width;
   };
+  FEOffsetElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  FEOffsetElement.prototype.get$y = function(receiver) {
+    return receiver.y;
+  };
   function FEPointLightElement() {
   }
   FEPointLightElement.builtin$cls = "FEPointLightElement";
@@ -10679,6 +10797,12 @@ function dart_precompiled($collectedClasses) {
   if ($desc instanceof Array)
     $desc = $desc[1];
   FEPointLightElement.prototype = $desc;
+  FEPointLightElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  FEPointLightElement.prototype.get$y = function(receiver) {
+    return receiver.y;
+  };
   function FESpecularLightingElement() {
   }
   FESpecularLightingElement.builtin$cls = "FESpecularLightingElement";
@@ -10694,6 +10818,12 @@ function dart_precompiled($collectedClasses) {
   FESpecularLightingElement.prototype.get$width = function(receiver) {
     return receiver.width;
   };
+  FESpecularLightingElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  FESpecularLightingElement.prototype.get$y = function(receiver) {
+    return receiver.y;
+  };
   function FESpotLightElement() {
   }
   FESpotLightElement.builtin$cls = "FESpotLightElement";
@@ -10703,6 +10833,12 @@ function dart_precompiled($collectedClasses) {
   if ($desc instanceof Array)
     $desc = $desc[1];
   FESpotLightElement.prototype = $desc;
+  FESpotLightElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  FESpotLightElement.prototype.get$y = function(receiver) {
+    return receiver.y;
+  };
   function FETileElement() {
   }
   FETileElement.builtin$cls = "FETileElement";
@@ -10717,6 +10853,12 @@ function dart_precompiled($collectedClasses) {
   };
   FETileElement.prototype.get$width = function(receiver) {
     return receiver.width;
+  };
+  FETileElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  FETileElement.prototype.get$y = function(receiver) {
+    return receiver.y;
   };
   function FETurbulenceElement() {
   }
@@ -10733,6 +10875,12 @@ function dart_precompiled($collectedClasses) {
   FETurbulenceElement.prototype.get$width = function(receiver) {
     return receiver.width;
   };
+  FETurbulenceElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  FETurbulenceElement.prototype.get$y = function(receiver) {
+    return receiver.y;
+  };
   function FilterElement() {
   }
   FilterElement.builtin$cls = "FilterElement";
@@ -10748,6 +10896,12 @@ function dart_precompiled($collectedClasses) {
   FilterElement.prototype.get$width = function(receiver) {
     return receiver.width;
   };
+  FilterElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  FilterElement.prototype.get$y = function(receiver) {
+    return receiver.y;
+  };
   function ForeignObjectElement() {
   }
   ForeignObjectElement.builtin$cls = "ForeignObjectElement";
@@ -10762,6 +10916,12 @@ function dart_precompiled($collectedClasses) {
   };
   ForeignObjectElement.prototype.get$width = function(receiver) {
     return receiver.width;
+  };
+  ForeignObjectElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  ForeignObjectElement.prototype.get$y = function(receiver) {
+    return receiver.y;
   };
   function GElement() {
   }
@@ -10805,6 +10965,12 @@ function dart_precompiled($collectedClasses) {
   ImageElement0.prototype.get$width = function(receiver) {
     return receiver.width;
   };
+  ImageElement0.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  ImageElement0.prototype.get$y = function(receiver) {
+    return receiver.y;
+  };
   function LineElement() {
   }
   LineElement.builtin$cls = "LineElement";
@@ -10847,6 +11013,12 @@ function dart_precompiled($collectedClasses) {
   MaskElement.prototype.get$width = function(receiver) {
     return receiver.width;
   };
+  MaskElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  MaskElement.prototype.get$y = function(receiver) {
+    return receiver.y;
+  };
   function MetadataElement() {
   }
   MetadataElement.builtin$cls = "MetadataElement";
@@ -10879,6 +11051,12 @@ function dart_precompiled($collectedClasses) {
   };
   PatternElement.prototype.get$width = function(receiver) {
     return receiver.width;
+  };
+  PatternElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  PatternElement.prototype.get$y = function(receiver) {
+    return receiver.y;
   };
   function PolygonElement() {
   }
@@ -10921,6 +11099,12 @@ function dart_precompiled($collectedClasses) {
   };
   RectElement.prototype.get$width = function(receiver) {
     return receiver.width;
+  };
+  RectElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  RectElement.prototype.get$y = function(receiver) {
+    return receiver.y;
   };
   function ScriptElement0() {
   }
@@ -10981,6 +11165,12 @@ function dart_precompiled($collectedClasses) {
   };
   SvgSvgElement.prototype.get$width = function(receiver) {
     return receiver.width;
+  };
+  SvgSvgElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  SvgSvgElement.prototype.get$y = function(receiver) {
+    return receiver.y;
   };
   function SwitchElement() {
   }
@@ -11045,6 +11235,12 @@ function dart_precompiled($collectedClasses) {
   if ($desc instanceof Array)
     $desc = $desc[1];
   TextPositioningElement.prototype = $desc;
+  TextPositioningElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  TextPositioningElement.prototype.get$y = function(receiver) {
+    return receiver.y;
+  };
   function TitleElement0() {
   }
   TitleElement0.builtin$cls = "TitleElement0";
@@ -11068,6 +11264,12 @@ function dart_precompiled($collectedClasses) {
   };
   UseElement.prototype.get$width = function(receiver) {
     return receiver.width;
+  };
+  UseElement.prototype.get$x = function(receiver) {
+    return receiver.x;
+  };
+  UseElement.prototype.get$y = function(receiver) {
+    return receiver.y;
   };
   function ViewElement() {
   }
@@ -13849,11 +14051,32 @@ function dart_precompiled($collectedClasses) {
   if ($desc instanceof Array)
     $desc = $desc[1];
   Box.prototype = $desc;
+  Box.prototype.get$x = function(receiver) {
+    return this.x;
+  };
   Box.prototype.set$x = function(receiver, v) {
     return this.x = v;
   };
+  Box.prototype.get$y = function(receiver) {
+    return this.y;
+  };
+  Box.prototype.get$color = function(receiver) {
+    return this.color;
+  };
   Box.prototype.get$id = function(receiver) {
     return this.id;
+  };
+  Box.prototype.set$leftNeighbor = function(v) {
+    return this.leftNeighbor = v;
+  };
+  Box.prototype.set$rightNeighbor = function(v) {
+    return this.rightNeighbor = v;
+  };
+  Box.prototype.set$upperNeighbor = function(v) {
+    return this.upperNeighbor = v;
+  };
+  Box.prototype.set$lowerNeighbor = function(v) {
+    return this.lowerNeighbor = v;
   };
   function Box_closure(this_0) {
     this.this_0 = this_0;

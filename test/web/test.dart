@@ -367,7 +367,7 @@ class Game {
     ctx.textAlign = 'left';
     ctx.textBaseline = 'center';
     ctx.fillText("Server/Client Attempt: Client# ${clientID} Trial# ${trialNum}", 100, 50);
-    ctx.fillText("Score: ${score}", 100, 100);
+    ctx.fillText("Score: ${score}", myState.myBoxes.first.x, 100);
     for(Box box in myState.myBoxes){
       box.draw(ctx);
       //ctx.fillStyle = box.color;

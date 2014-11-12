@@ -174,8 +174,8 @@ class Box{
   }
   
   void rightMove (num dx, num dy) {
-    num width = 50;
-    num newX = dx + 50;
+    num width = 100;
+    num newX = dx + 100;
     num newY = dy;
     x = newX;
     y = newY;
@@ -186,7 +186,7 @@ class Box{
   
   void leftMove (num dx, num dy) {
       //num width = 50;
-      num newX = dx - 50;
+      num newX = dx - 100;
       num newY = dy;
       x = newX;
       y = newY;
@@ -196,9 +196,9 @@ class Box{
     }
   
   void upperMove (num dx, num dy) {
-    num width = 50;
+    num width = 100;
     num newX = dx;
-    num newY = dy + 50;
+    num newY = dy + 100;
     x = newX;
     y = newY;
     if (upperNeighbor != null){
@@ -209,7 +209,7 @@ class Box{
   void lowerMove (num dx, num dy) {
       //num width = 50;
       num newX = dx ;
-      num newY = dy- 50;
+      num newY = dy - 100;
       x = newX;
       y = newY;
       if (lowerNeighbor != null){
@@ -218,7 +218,7 @@ class Box{
     }
   
   void snap (){
-    num width = 50;
+    num width = 100;
     num leftX = x - width;
     num rightX = x + width;
     //potential bug
@@ -245,7 +245,7 @@ class Box{
   }
   
   void snapLeft(){
-    num width = 50;
+    num width = 100;
     num leftX = rightNeighbor.leftNeighbor.x - width;
     if (leftNeighbor != null){
           leftNeighbor.x = leftX;
@@ -254,7 +254,7 @@ class Box{
   }
   
   void snapRight(){
-    num width = 50;
+    num width = 100;
     num rightX = leftNeighbor.rightNeighbor.x + width;
     if (rightNeighbor != null){
           rightNeighbor.x = rightX;
@@ -263,7 +263,7 @@ class Box{
   }
   
   void snapUpper(){
-    num width = 50;
+    num width = 100;
     num UpperY = lowerNeighbor.upperNeighbor.y + width;
     if (upperNeighbor != null){
       upperNeighbor.x = x;
@@ -272,7 +272,7 @@ class Box{
   }
   
   void snaplower(){
-    num width = 50;
+    num width = 100;
     num lowerY = lowerNeighbor.upperNeighbor.y - width;
     if (lowerNeighbor != null){
       lowerNeighbor.x = x;
@@ -347,14 +347,14 @@ class State{
         if(box.x < 0){
           box.x = box.x * -1;
         }
-        else if(box.x > 600){
+        else if(box.x > 1200){
           box.x = box.x -15;
         }
         
         if(box.y < 0){
           box.y = box.y * -1;
         }
-        else if(box.y > 400){
+        else if(box.y > 800){
           box.y = box.y -15;
         }
       }
@@ -481,7 +481,7 @@ Trial () {
     }
   
   void transition() {
-     List<String> order = [['red', 'blue', 'green', 'purple'],['red', 'blue', 'green', 'black'], ['red', 'blue', 'green', 'purple'], ['red', 'blue', 'green',  'black']];
+     List<String> order = [['plaid1', 'plaid2', 'plaid3', 'plaid4', 'plaid5', 'plaid6', 'plaid7', 'plaid8', 'plaid9'],['red', 'blue', 'green', 'black'], ['red', 'blue', 'green', 'purple'], ['red', 'blue', 'green',  'black']];
      switch(phase){
           case 'TRIAL ZERO':
               phase = 'BREAK';
