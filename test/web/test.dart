@@ -324,6 +324,7 @@ class Game {
   TouchLayer tlayer = new TouchLayer();
   
   var score;
+  var phaseBreak;
   var clientID;
   var trialNum;
   bool flagDraw = true;
@@ -373,18 +374,27 @@ class Game {
       //print ('drawing');
       clear();
       //ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = 'white';
-      ctx.font = '30px sans-serif';
-      ctx.textAlign = 'left';
-      ctx.textBaseline = 'center';
-      ctx.fillText("Server/Client Attempt: Client# ${clientID} Trial# ${trialNum}", 100, 50);
-      ctx.fillText("Score: ${score}", 100, 100);
-      for(Box box in myState.myBoxes){
-        box.draw(ctx);
-        //ctx.fillStyle = box.color;
-        //ctx.fillRect(box.x, box.y, 50, 50);
+      if (phaseBreak == 'false'){
+        ctx.fillStyle = 'white';
+        ctx.font = '30px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'center';
+        ctx.fillText("Server/Client Attempt: Client# ${clientID} Trial# ${trialNum}", 100, 50);
+        ctx.fillText("Score: ${score}", 100, 100);
+        for(Box box in myState.myBoxes){
+          box.draw(ctx);
+          //ctx.fillStyle = box.color;
+          //ctx.fillRect(box.x, box.y, 50, 50);
+        }
+      flagDraw = false;
       }
-    flagDraw = false;
+      if (phaseBreak == 'true'){
+        ctx.fillStyle = 'white';
+        ctx.font = '30px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'center';
+        ctx.fillText("10 second break!", 100, 50);
+      }
     }
   }
   
@@ -413,6 +423,9 @@ class Game {
     }
     if (data[0] == "s"){
       score = data.substring(2);
+    }
+    if (data[0] == "p"){
+         phaseBreak = data.substring(2);
     }
     if (data[0] == "i"){
       String tempMsg = data.substring(2);

@@ -7288,7 +7288,7 @@ var $$ = {};
     t3 = P.LinkedHashMap_LinkedHashMap(null, null, null, P.$int, X.TouchBinding);
     t4 = new X.TouchLayer(H.setRuntimeTypeInfo([], [X.Touchable]), P.LinkedHashMap_LinkedHashMap(null, null, null, P.$int, X.Touchable), null);
     t4.enabled = true;
-    t4 = new X.Game(null, t1, null, null, null, null, null, new X.TouchManager(false, null, t2, t3), t4, null, null, null, true);
+    t4 = new X.Game(null, t1, null, null, null, null, null, new X.TouchManager(false, null, t2, t3), t4, null, null, null, null, true);
     t4.Game$0();
     $.game = t4;
   }, "call$0", "main$closure", 0, 0, 2],
@@ -7544,7 +7544,7 @@ var $$ = {};
     }
   },
   Game: {
-    "^": "Object;canvas,img,ctx,width,height,myState,box,tmanager,tlayer,score,clientID,trialNum,flagDraw",
+    "^": "Object;canvas,img,ctx,width,height,myState,box,tmanager,tlayer,score,phaseBreak,clientID,trialNum,flagDraw",
     animate$1: [function(_, i) {
       C.Window_methods.get$animationFrame(window).then$1(this.get$animate(this));
       this.draw$0();
@@ -7555,15 +7555,24 @@ var $$ = {};
         J.setTransform$6$x(this.ctx, 1, 0, 0, 1, 0, 0);
         J.clearRect$4$x(this.ctx, 0, 0, this.width, this.height);
         J.restore$0$x(this.ctx);
-        J.set$fillStyle$x(this.ctx, "white");
-        J.set$font$x(this.ctx, "30px sans-serif");
-        J.set$textAlign$x(this.ctx, "left");
-        J.set$textBaseline$x(this.ctx, "center");
-        J.fillText$3$x(this.ctx, "Server/Client Attempt: Client# " + H.S(this.clientID) + " Trial# " + H.S(this.trialNum), 100, 50);
-        J.fillText$3$x(this.ctx, "Score: " + H.S(this.score), 100, 100);
-        for (var t1 = this.myState.myBoxes, t1 = new H.ListIterator(t1, t1.length, 0, null); t1.moveNext$0();)
-          t1._current.draw$1(this.ctx);
-        this.flagDraw = false;
+        if (this.phaseBreak === "false") {
+          J.set$fillStyle$x(this.ctx, "white");
+          J.set$font$x(this.ctx, "30px sans-serif");
+          J.set$textAlign$x(this.ctx, "left");
+          J.set$textBaseline$x(this.ctx, "center");
+          J.fillText$3$x(this.ctx, "Server/Client Attempt: Client# " + H.S(this.clientID) + " Trial# " + H.S(this.trialNum), 100, 50);
+          J.fillText$3$x(this.ctx, "Score: " + H.S(this.score), 100, 100);
+          for (var t1 = this.myState.myBoxes, t1 = new H.ListIterator(t1, t1.length, 0, null); t1.moveNext$0();)
+            t1._current.draw$1(this.ctx);
+          this.flagDraw = false;
+        }
+        if (this.phaseBreak === "true") {
+          J.set$fillStyle$x(this.ctx, "white");
+          J.set$font$x(this.ctx, "30px sans-serif");
+          J.set$textAlign$x(this.ctx, "left");
+          J.set$textBaseline$x(this.ctx, "center");
+          J.fillText$3$x(this.ctx, "10 second break!", 100, 50);
+        }
       }
     },
     handleMsg$1: function(data) {
@@ -7592,6 +7601,8 @@ var $$ = {};
       }
       if (J.$eq(t1.$index(data, 0), "s"))
         this.score = t1.substring$1(data, 2);
+      if (J.$eq(t1.$index(data, 0), "p"))
+        this.phaseBreak = t1.substring$1(data, 2);
       if (J.$eq(t1.$index(data, 0), "i")) {
         temp = t1.substring$1(data, 2).split(",");
         t1 = temp.length;
@@ -13941,7 +13952,7 @@ function dart_precompiled($collectedClasses) {
   if ($desc instanceof Array)
     $desc = $desc[1];
   State.prototype = $desc;
-  function Game(canvas, img, ctx, width, height, myState, box, tmanager, tlayer, score, clientID, trialNum, flagDraw) {
+  function Game(canvas, img, ctx, width, height, myState, box, tmanager, tlayer, score, phaseBreak, clientID, trialNum, flagDraw) {
     this.canvas = canvas;
     this.img = img;
     this.ctx = ctx;
@@ -13952,6 +13963,7 @@ function dart_precompiled($collectedClasses) {
     this.tmanager = tmanager;
     this.tlayer = tlayer;
     this.score = score;
+    this.phaseBreak = phaseBreak;
     this.clientID = clientID;
     this.trialNum = trialNum;
     this.flagDraw = flagDraw;
