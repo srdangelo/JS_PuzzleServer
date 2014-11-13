@@ -43,6 +43,7 @@ void initWebSocket([int retrySeconds = 2]) {
   });
 
   ws.onMessage.listen((MessageEvent e) {
+      game.handleMsg(e.data);
 //    outputMsg('Received message: ${e.data}');
   });
 }
@@ -208,6 +209,8 @@ class Box implements Touchable{
     num boxWidth = img.width;    
     num boxHeight = img.height;
     ctx.translate(x, y);
+//    ctx.fillStyle = 'yellow';
+//    ctx.fillRect(x, y, 50, 50);
     ctx.drawImage(img, -boxWidth/2, -boxHeight/2);
     }
     ctx.restore();
@@ -323,6 +326,7 @@ class Game {
   var score;
   var clientID;
   var trialNum;
+  bool flagDraw = true;
   
   Game() {
     canvas = querySelector("#game");
@@ -338,7 +342,9 @@ class Game {
     
     // redraw the canvas every 40 milliseconds runs animate function every 40 milliseconds 
     //updating at 15fps for now, will test for lag at 30 fps later
-    new Timer.periodic(const Duration(milliseconds : 8), (timer) => animate());
+    //new Timer.periodic(const Duration(milliseconds : 80), (timer) => animate());
+    
+    window.animationFrame.then(animate);
     
   }
 
@@ -346,12 +352,14 @@ class Game {
 //**
 // * Animate all of the game objects makes things movie without an event 
 // */
-  void animate() {
-    print("time spent on listen");
-    ws.onMessage.listen((MessageEvent e) {
-      handleMsg(e.data);
-    });
-    print("time spent on draw");
+  void animate(double i) {
+    window.animationFrame.then(animate);
+    //print("time spent on listen");
+//    ws.onMessage.listen((MessageEvent e) {
+//      //print (e.data);
+//      handleMsg(e.data);
+//    });
+    //print("time spent on draw");
     draw();
     
   }
@@ -361,23 +369,36 @@ class Game {
 // * Draws programming blocks
 // */
   void draw() {
-    ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = 'white';
-    ctx.font = '30px sans-serif';
-    ctx.textAlign = 'left';
-    ctx.textBaseline = 'center';
-    ctx.fillText("Server/Client Attempt: Client# ${clientID} Trial# ${trialNum}", 100, 50);
-    ctx.fillText("Score: ${score}", myState.myBoxes.first.x, 100);
-    for(Box box in myState.myBoxes){
-      box.draw(ctx);
-      //ctx.fillStyle = box.color;
-      //ctx.fillRect(box.x, box.y, 50, 50);
-      
+    if (flagDraw){ 
+      //print ('drawing');
+      clear();
+      //ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = 'white';
+      ctx.font = '30px sans-serif';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'center';
+      ctx.fillText("Server/Client Attempt: Client# ${clientID} Trial# ${trialNum}", 100, 50);
+      ctx.fillText("Score: ${score}", 100, 100);
+      for(Box box in myState.myBoxes){
+        box.draw(ctx);
+        //ctx.fillStyle = box.color;
+        //ctx.fillRect(box.x, box.y, 50, 50);
+      }
+    flagDraw = false;
     }
+  }
+  
+  void clear(){
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, width, height);
+    ctx.restore();
   }
   
   //parse incoming messages 
   handleMsg(data){
+    flagDraw = true;
+    print (data);
     //'u' message indicates a state update
     if(data[0] == "u"){
       //split up the message via each object

@@ -295,8 +295,8 @@ class Box{
           num targetY = (sin(head) * dist) + this.y; 
           move(targetX, targetY);
                     
-          gl_newX = random.nextInt(400);
-          gl_newY = random.nextInt(400);
+          gl_newX = random.nextInt(1200);
+          gl_newY = random.nextInt(800);
           //change to game width and hieght
         } 
 
@@ -359,6 +359,7 @@ class State{
         }
       }
     }
+    sendState();
 
   }
   
@@ -571,7 +572,7 @@ void main() {
   
   //setup times to update the state and send out messages to clients out with state information
   //running at about 15fps
-  new Timer.periodic(const Duration(milliseconds : 80), (timer) => myState.updateState());
-  new Timer.periodic(const Duration(milliseconds : 80), (timer) => myState.sendState());
+  new Timer.periodic(const Duration(milliseconds : 30), (timer) => myState.updateState());
+  //new Timer.periodic(const Duration(milliseconds : 80), (timer) => myState.sendState());
   
 }
