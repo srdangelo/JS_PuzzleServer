@@ -40,6 +40,7 @@ class myClient {
       String tempMsg = msg.substring(2);
       List<String> data = tempMsg.split(",");
       myState.assignNeighbor(num.parse(data[0]), data[1], num.parse(data[2]));
+      myState.calculateScore();
     }
     if (msg[0] == "c"){
           //print(msg);
@@ -341,8 +342,6 @@ class State{
 
         box.moveAround(); 
         
-
-        
         //keep movement within the bounds 600x400 hardcoded for now
         if(box.x < 0){
           box.x = box.x * -1;
@@ -417,35 +416,77 @@ class State{
         if (side == 'right'){
           box.rightNeighbor = myBoxes[neighbor - 1];
           box.snap();
-          score += 10;
         }
         if (side == 'left'){
           box.leftNeighbor = myBoxes[neighbor - 1];
           box.snap();
-          score += 10;
         }
         if (side == 'upper'){
                   box.upperNeighbor = myBoxes[neighbor - 1];
                   box.snap();
-                  score += 10;
         }
         if (side == 'lower'){
                           box.lowerNeighbor = myBoxes[neighbor - 1];
                           box.snap();
-                          score += 10;
        }
       }
     }
-    var sendScore = "s: ${score} \n";
-    distributeMessage(sendScore);
-    print (myBoxes.length);
-    logData(sendScore, 'clientData.csv');
-    if (score == 90 + (10 * myBoxes.length)){
-      trial.transition();
-    }
   }
   
-  
+
+  calculateScore(){
+      score=100;  
+      bool test1=false;
+      bool test2=false;
+      int myBoxesLength=myBoxes.length;
+      int myBoxesLengthSqrt=sqrt(myBoxesLength).toInt();
+      for(Box box in myBoxes){
+        test1=false;
+        test2=false;
+        int i = myBoxes.indexOf(box);
+        if (i % myBoxesLengthSqrt== 0){
+          if (box.rightNeighbor !=null){
+            test1=true;
+          }
+        }
+        else if (i % myBoxesLengthSqrt == myBoxesLengthSqrt - 1){
+          if (box.leftNeighbor !=null){
+            test1=true;
+          }
+        }
+        else {
+          if (box.leftNeighbor !=null && box.rightNeighbor !=null){
+            test1=true;
+          }
+        }
+        if (i/myBoxesLengthSqrt<1){
+          if (box.lowerNeighbor !=null){
+            test2=true;
+          }
+        }
+        else if (i/myBoxesLengthSqrt>=myBoxesLengthSqrt-1){
+          if(box.upperNeighbor !=null){
+            test2=true;
+          }
+        }
+        else{
+          if (box.lowerNeighbor!=null &&box.upperNeighbor !=null){
+            test2=true;
+          }
+        }
+        if (test1==true &&test2==true){
+          score+=10;
+        }
+      }
+      var sendScore = "s: ${score} \n";
+      distributeMessage(sendScore);
+      print (myBoxes.length);
+      logData(sendScore, 'clientData.csv');
+      if (score == 100 + (10 * myBoxes.length))
+      {
+        trial.transition();
+      }
+    }
   
 }
 
