@@ -6243,7 +6243,7 @@ var $$ = {};
   },
   HtmlElement: {
     "^": "Element;",
-    "%": "HTMLAppletElement|HTMLBRElement|HTMLBaseElement|HTMLButtonElement|HTMLContentElement|HTMLDListElement|HTMLDataListElement|HTMLDetailsElement|HTMLDialogElement|HTMLDirectoryElement|HTMLDivElement|HTMLFieldSetElement|HTMLFontElement|HTMLFrameElement|HTMLHRElement|HTMLHeadElement|HTMLHeadingElement|HTMLHtmlElement|HTMLKeygenElement|HTMLLIElement|HTMLLabelElement|HTMLLegendElement|HTMLLinkElement|HTMLMapElement|HTMLMarqueeElement|HTMLMenuElement|HTMLMetaElement|HTMLMeterElement|HTMLModElement|HTMLOListElement|HTMLOptGroupElement|HTMLOptionElement|HTMLOutputElement|HTMLParagraphElement|HTMLParamElement|HTMLPreElement|HTMLProgressElement|HTMLQuoteElement|HTMLShadowElement|HTMLSpanElement|HTMLStyleElement|HTMLTableCaptionElement|HTMLTableCellElement|HTMLTableColElement|HTMLTableDataCellElement|HTMLTableElement|HTMLTableHeaderCellElement|HTMLTableRowElement|HTMLTableSectionElement|HTMLTemplateElement|HTMLTextAreaElement|HTMLTitleElement|HTMLUListElement|HTMLUnknownElement;HTMLElement"
+    "%": "HTMLAppletElement|HTMLBRElement|HTMLBaseElement|HTMLButtonElement|HTMLContentElement|HTMLDListElement|HTMLDataListElement|HTMLDetailsElement|HTMLDialogElement|HTMLDirectoryElement|HTMLDivElement|HTMLFieldSetElement|HTMLFontElement|HTMLFrameElement|HTMLHeadElement|HTMLHeadingElement|HTMLHtmlElement|HTMLKeygenElement|HTMLLIElement|HTMLLabelElement|HTMLLegendElement|HTMLLinkElement|HTMLMapElement|HTMLMarqueeElement|HTMLMenuElement|HTMLMetaElement|HTMLMeterElement|HTMLModElement|HTMLOListElement|HTMLOptGroupElement|HTMLOptionElement|HTMLOutputElement|HTMLParagraphElement|HTMLParamElement|HTMLPreElement|HTMLProgressElement|HTMLQuoteElement|HTMLShadowElement|HTMLSpanElement|HTMLStyleElement|HTMLTableCaptionElement|HTMLTableCellElement|HTMLTableColElement|HTMLTableDataCellElement|HTMLTableElement|HTMLTableHeaderCellElement|HTMLTableRowElement|HTMLTableSectionElement|HTMLTemplateElement|HTMLTextAreaElement|HTMLTitleElement|HTMLUListElement|HTMLUnknownElement;HTMLElement"
   },
   AnchorElement: {
     "^": "HtmlElement;",
@@ -6376,6 +6376,10 @@ var $$ = {};
   FormElement: {
     "^": "HtmlElement;length=",
     "%": "HTMLFormElement"
+  },
+  HRElement: {
+    "^": "HtmlElement;color=",
+    "%": "HTMLHRElement"
   },
   IFrameElement: {
     "^": "HtmlElement;height=,src},width=",
@@ -6658,75 +6662,83 @@ var $$ = {};
 ["dart.dom.svg", "dart:svg", , P, {
   "^": "",
   FEBlendElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEBlendElement"
   },
   FEColorMatrixElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEColorMatrixElement"
   },
   FEComponentTransferElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEComponentTransferElement"
   },
   FECompositeElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFECompositeElement"
   },
   FEConvolveMatrixElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEConvolveMatrixElement"
   },
   FEDiffuseLightingElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEDiffuseLightingElement"
   },
   FEDisplacementMapElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEDisplacementMapElement"
   },
   FEFloodElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEFloodElement"
   },
   FEGaussianBlurElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEGaussianBlurElement"
   },
   FEImageElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEImageElement"
   },
   FEMergeElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEMergeElement"
   },
   FEMorphologyElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEMorphologyElement"
   },
   FEOffsetElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFEOffsetElement"
   },
+  FEPointLightElement: {
+    "^": "SvgElement;x=,y=",
+    "%": "SVGFEPointLightElement"
+  },
   FESpecularLightingElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFESpecularLightingElement"
   },
+  FESpotLightElement: {
+    "^": "SvgElement;x=,y=",
+    "%": "SVGFESpotLightElement"
+  },
   FETileElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFETileElement"
   },
   FETurbulenceElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFETurbulenceElement"
   },
   FilterElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGFilterElement"
   },
   ForeignObjectElement: {
-    "^": "GraphicsElement;height=,width=",
+    "^": "GraphicsElement;height=,width=,x=,y=",
     "%": "SVGForeignObjectElement"
   },
   GeometryElement: {
@@ -6735,22 +6747,22 @@ var $$ = {};
   },
   GraphicsElement: {
     "^": "SvgElement;",
-    "%": "SVGAElement|SVGAltGlyphElement|SVGClipPathElement|SVGDefsElement|SVGGElement|SVGSwitchElement|SVGTSpanElement|SVGTextContentElement|SVGTextElement|SVGTextPathElement|SVGTextPositioningElement;SVGGraphicsElement"
+    "%": "SVGAElement|SVGClipPathElement|SVGDefsElement|SVGGElement|SVGSwitchElement;SVGGraphicsElement"
   },
   ImageElement0: {
-    "^": "GraphicsElement;height=,width=",
+    "^": "GraphicsElement;height=,width=,x=,y=",
     "%": "SVGImageElement"
   },
   MaskElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGMaskElement"
   },
   PatternElement: {
-    "^": "SvgElement;height=,width=",
+    "^": "SvgElement;height=,width=,x=,y=",
     "%": "SVGPatternElement"
   },
   RectElement: {
-    "^": "GeometryElement;height=,width=",
+    "^": "GeometryElement;height=,width=,x=,y=",
     "%": "SVGRectElement"
   },
   SvgElement: {
@@ -6765,14 +6777,22 @@ var $$ = {};
       return H.setRuntimeTypeInfo(new W._ElementEventStreamImpl(receiver, C.EventStreamProvider_mouseup._eventType, false), [null]);
     },
     $isEventTarget: true,
-    "%": "SVGAltGlyphDefElement|SVGAltGlyphItemElement|SVGAnimateElement|SVGAnimateMotionElement|SVGAnimateTransformElement|SVGAnimationElement|SVGComponentTransferFunctionElement|SVGCursorElement|SVGDescElement|SVGDiscardElement|SVGFEDistantLightElement|SVGFEDropShadowElement|SVGFEFuncAElement|SVGFEFuncBElement|SVGFEFuncGElement|SVGFEFuncRElement|SVGFEMergeNodeElement|SVGFEPointLightElement|SVGFESpotLightElement|SVGFontElement|SVGFontFaceElement|SVGFontFaceFormatElement|SVGFontFaceNameElement|SVGFontFaceSrcElement|SVGFontFaceUriElement|SVGGlyphElement|SVGGlyphRefElement|SVGGradientElement|SVGHKernElement|SVGLinearGradientElement|SVGMPathElement|SVGMarkerElement|SVGMetadataElement|SVGMissingGlyphElement|SVGRadialGradientElement|SVGScriptElement|SVGSetElement|SVGStopElement|SVGStyleElement|SVGSymbolElement|SVGTitleElement|SVGVKernElement|SVGViewElement;SVGElement"
+    "%": "SVGAltGlyphDefElement|SVGAltGlyphItemElement|SVGAnimateElement|SVGAnimateMotionElement|SVGAnimateTransformElement|SVGAnimationElement|SVGComponentTransferFunctionElement|SVGCursorElement|SVGDescElement|SVGDiscardElement|SVGFEDistantLightElement|SVGFEDropShadowElement|SVGFEFuncAElement|SVGFEFuncBElement|SVGFEFuncGElement|SVGFEFuncRElement|SVGFEMergeNodeElement|SVGFontElement|SVGFontFaceElement|SVGFontFaceFormatElement|SVGFontFaceNameElement|SVGFontFaceSrcElement|SVGFontFaceUriElement|SVGGlyphElement|SVGGlyphRefElement|SVGGradientElement|SVGHKernElement|SVGLinearGradientElement|SVGMPathElement|SVGMarkerElement|SVGMetadataElement|SVGMissingGlyphElement|SVGRadialGradientElement|SVGScriptElement|SVGSetElement|SVGStopElement|SVGStyleElement|SVGSymbolElement|SVGTitleElement|SVGVKernElement|SVGViewElement;SVGElement"
   },
   SvgSvgElement: {
-    "^": "GraphicsElement;height=,width=",
+    "^": "GraphicsElement;height=,width=,x=,y=",
     "%": "SVGSVGElement"
   },
+  TextContentElement: {
+    "^": "GraphicsElement;",
+    "%": "SVGTextPathElement;SVGTextContentElement"
+  },
+  TextPositioningElement: {
+    "^": "TextContentElement;x=,y=",
+    "%": "SVGAltGlyphElement|SVGTSpanElement|SVGTextElement|SVGTextPositioningElement"
+  },
   UseElement: {
-    "^": "GraphicsElement;height=,width=",
+    "^": "GraphicsElement;height=,width=,x=,y=",
     "%": "SVGUseElement"
   }
 }],
@@ -7338,28 +7358,32 @@ var $$ = {};
     }
   },
   Box: {
-    "^": "Object;x',y,color,id>,dragged,img,rightBuddy,leftBuddy,upperBuddy,lowerBuddy,leftNeighbor,rightNeighbor,upperNeighbor,lowerNeighbor,dragTimer",
+    "^": "Object;x*,y>,color>,id>,dragged,img,rightBuddy,leftBuddy,upperBuddy,lowerBuddy,leftNeighbor?,rightNeighbor?,upperNeighbor?,lowerNeighbor?,dragTimer",
     containsTouch$1: function(e) {
       var t1, t2;
       t1 = e.touchX;
       t2 = this.x;
       if (typeof t2 !== "number")
         return H.iae(t2);
-      if (t1 > t2 && t1 < t2 + 50) {
+      if (t1 > t2 && t1 < t2 + 100) {
         t1 = e.touchY;
         t2 = this.y;
         if (typeof t2 !== "number")
           return H.iae(t2);
-        if (t1 > t2 && t1 < t2 + 50) {
+        if (t1 > t2 && t1 < t2 + 100) {
           P.print("true");
           return true;
         }
       }
       return false;
     },
-    touchUp$1: function($event) {
+    touchDown$1: function(e) {
+      this.dragged = true;
+      $.ws.send("c:" + H.S(this.id) + ", " + H.S(this.color) + ", " + H.S($.game.clientID));
+      return true;
+    },
+    touchUp$1: function(e) {
       var exception, exception0, t1;
-      this.dragged = false;
       try {
       } catch (exception0) {
         t1 = H.unwrapException(exception0);
@@ -7367,8 +7391,8 @@ var $$ = {};
         P.print(exception);
       }
 
+      this.dragged = false;
       $.ws.send("b:" + H.S(this.id) + ", " + H.S(this.color) + ", " + H.S($.game.clientID));
-      P.print("touchup " + H.S(this.id));
     },
     myTouchUp$1: function($event) {
       var exception, exception0, t1;
@@ -7380,42 +7404,6 @@ var $$ = {};
       }
 
       this.dragged = false;
-      t1 = this.rightBuddy;
-      if (t1 != null)
-        if (J.$ge$n(J.$add$ns(t1.x, 10), this.x) && J.$ge$n(J.$add$ns(this.rightBuddy.y, 10), this.y) && J.$le$n(J.$add$ns(this.rightBuddy.x, 10), J.$add$ns(this.x, 20)) && J.$le$n(J.$add$ns(this.rightBuddy.y, 10), J.$add$ns(this.y, 20))) {
-          t1 = this.rightBuddy;
-          this.rightNeighbor = t1;
-          t1.leftNeighbor = this;
-          P.print("neighbors!");
-          $.ws.send("n:" + H.S(this.id) + ",right," + H.S(this.rightNeighbor.id));
-        }
-      t1 = this.leftBuddy;
-      if (t1 != null)
-        if (J.$ge$n(J.$add$ns(t1.x, 10), this.x) && J.$ge$n(J.$add$ns(this.leftBuddy.y, 10), this.y) && J.$le$n(J.$add$ns(this.leftBuddy.x, 10), J.$add$ns(this.x, 20)) && J.$le$n(J.$add$ns(this.leftBuddy.y, 10), J.$add$ns(this.y, 20))) {
-          t1 = this.leftBuddy;
-          this.leftNeighbor = t1;
-          t1.rightNeighbor = this;
-          P.print("neighbors!");
-          $.ws.send("n:" + H.S(this.id) + ",left," + H.S(this.leftNeighbor.id));
-        }
-      t1 = this.upperBuddy;
-      if (t1 != null)
-        if (J.$ge$n(J.$add$ns(t1.x, 10), this.x) && J.$ge$n(J.$add$ns(this.upperBuddy.y, 10), this.y) && J.$le$n(J.$add$ns(this.upperBuddy.x, 10), J.$add$ns(this.x, 20)) && J.$le$n(J.$add$ns(this.upperBuddy.y, 10), J.$add$ns(this.y, 20))) {
-          t1 = this.upperBuddy;
-          this.upperNeighbor = t1;
-          t1.lowerNeighbor = this;
-          P.print("neighbors!");
-          $.ws.send("n:" + H.S(this.id) + ",upper," + H.S(this.upperNeighbor.id));
-        }
-      t1 = this.lowerBuddy;
-      if (t1 != null)
-        if (J.$ge$n(J.$add$ns(t1.x, 10), this.x) && J.$ge$n(J.$add$ns(this.lowerBuddy.y, 10), this.y) && J.$le$n(J.$add$ns(this.lowerBuddy.x, 10), J.$add$ns(this.x, 20)) && J.$le$n(J.$add$ns(this.lowerBuddy.y, 10), J.$add$ns(this.y, 20))) {
-          t1 = this.lowerBuddy;
-          this.lowerNeighbor = t1;
-          t1.upperNeighbor = this;
-          P.print("neighbors!");
-          $.ws.send("n:" + H.S(this.id) + ",lower," + H.S(this.lowerNeighbor.id));
-        }
       $.ws.send("b:" + H.S(this.id) + ", " + H.S(this.color) + ", " + H.S($.game.clientID));
     },
     touchDrag$1: function(e) {
@@ -7427,11 +7415,49 @@ var $$ = {};
         t4 = $.ws;
         t5 = this.id;
         if (t3)
-          t4.send("d:" + H.S(t5) + "," + H.S(t1) + "," + H.S(t2) + "," + H.S(this.color) + "," + H.S(this.leftNeighbor.color) + "," + H.S(this.rightNeighbor.color) + ", Client#" + H.S($.game.clientID));
+          t4.send("d:" + H.S(t5) + "," + H.S(t1) + "," + H.S(t2) + "," + H.S(this.color) + "," + H.S(J.get$color$x(this.leftNeighbor)) + "," + H.S(J.get$color$x(this.rightNeighbor)) + ", Client#" + H.S($.game.clientID));
         else
           t4.send("d:" + H.S(t5) + "," + H.S(t1) + "," + H.S(t2) + "," + H.S(this.color) + ", Client#" + H.S($.game.clientID));
         P.print(e.touchX);
       }
+    },
+    pieceLocation$0: function() {
+      var t1 = this.rightBuddy;
+      if (t1 != null)
+        if (J.$ge$n(J.$add$ns(J.get$x$x(t1), 10), this.x) && J.$ge$n(J.$add$ns(J.get$y$x(this.rightBuddy), 10), this.y) && J.$le$n(J.$add$ns(J.get$x$x(this.rightBuddy), 10), J.$add$ns(this.x, 20)) && J.$le$n(J.$add$ns(J.get$y$x(this.rightBuddy), 10), J.$add$ns(this.y, 20))) {
+          t1 = this.rightBuddy;
+          this.rightNeighbor = t1;
+          t1.set$leftNeighbor(this);
+          P.print("neighbors!");
+          $.ws.send("n:" + H.S(this.id) + ",right," + H.S(J.get$id$x(this.rightNeighbor)));
+        }
+      t1 = this.leftBuddy;
+      if (t1 != null)
+        if (J.$ge$n(J.$add$ns(J.get$x$x(t1), 10), this.x) && J.$ge$n(J.$add$ns(J.get$y$x(this.leftBuddy), 10), this.y) && J.$le$n(J.$add$ns(J.get$x$x(this.leftBuddy), 10), J.$add$ns(this.x, 20)) && J.$le$n(J.$add$ns(J.get$y$x(this.leftBuddy), 10), J.$add$ns(this.y, 20))) {
+          t1 = this.leftBuddy;
+          this.leftNeighbor = t1;
+          t1.set$rightNeighbor(this);
+          P.print("neighbors!");
+          $.ws.send("n:" + H.S(this.id) + ",left," + H.S(J.get$id$x(this.leftNeighbor)));
+        }
+      t1 = this.upperBuddy;
+      if (t1 != null)
+        if (J.$ge$n(J.$add$ns(J.get$x$x(t1), 10), this.x) && J.$ge$n(J.$add$ns(J.get$y$x(this.upperBuddy), 10), this.y) && J.$le$n(J.$add$ns(J.get$x$x(this.upperBuddy), 10), J.$add$ns(this.x, 20)) && J.$le$n(J.$add$ns(J.get$y$x(this.upperBuddy), 10), J.$add$ns(this.y, 20))) {
+          t1 = this.upperBuddy;
+          this.upperNeighbor = t1;
+          t1.set$lowerNeighbor(this);
+          P.print("neighbors!");
+          $.ws.send("n:" + H.S(this.id) + ",upper," + H.S(J.get$id$x(this.upperNeighbor)));
+        }
+      t1 = this.lowerBuddy;
+      if (t1 != null)
+        if (J.$ge$n(J.$add$ns(J.get$x$x(t1), 10), this.x) && J.$ge$n(J.$add$ns(J.get$y$x(this.lowerBuddy), 10), this.y) && J.$le$n(J.$add$ns(J.get$x$x(this.lowerBuddy), 10), J.$add$ns(this.x, 20)) && J.$le$n(J.$add$ns(J.get$y$x(this.lowerBuddy), 10), J.$add$ns(this.y, 20))) {
+          t1 = this.lowerBuddy;
+          this.lowerNeighbor = t1;
+          t1.set$upperNeighbor(this);
+          P.print("neighbors!");
+          $.ws.send("n:" + H.S(this.id) + ",lower," + H.S(J.get$id$x(this.lowerNeighbor)));
+        }
     },
     draw$1: function(ctx) {
       var t1, t2, boxWidth, boxHeight;
@@ -7451,6 +7477,8 @@ var $$ = {};
     Box$4: function(id, x, y, color) {
       var t1 = H.setRuntimeTypeInfo(new W._EventStream(document, C.EventStreamProvider_mouseup._eventType, false), [null]);
       H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._html$_target, t1._eventType, W._wrapZone(new X.Box_closure(this)), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
+      t1 = H.setRuntimeTypeInfo(new W._EventStream(document, C.EventStreamProvider_touchend._eventType, false), [null]);
+      H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._html$_target, t1._eventType, W._wrapZone(new X.Box_closure0(this)), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
       this.dragged = false;
       J.set$src$x(this.img, "images/" + H.S(this.color) + ".png");
     },
@@ -7464,6 +7492,12 @@ var $$ = {};
     "^": "Closure:10;this_0",
     call$1: function(e) {
       return this.this_0.myTouchUp$1(e);
+    }
+  },
+  Box_closure0: {
+    "^": "Closure:10;this_1",
+    call$1: function(e) {
+      return this.this_1.touchUp$1(e);
     }
   },
   State: {
@@ -7541,6 +7575,8 @@ var $$ = {};
         this.myBoxes.push(temp);
       }
       this.lastLength = myBoxesLength;
+      for (t1 = this.myBoxes, t1 = new H.ListIterator(t1, t1.length, 0, null); t1.moveNext$0();)
+        t1._current.pieceLocation$0();
     }
   },
   Game: {
@@ -7686,13 +7722,13 @@ var $$ = {};
   TouchManager_registerEvents_closure: {
     "^": "Closure:10;this_0",
     call$1: function(e) {
-      var t1, target;
+      var t1, t, target;
       t1 = this.this_0;
-      target = t1.findTouchTarget$1(X.Contact$fromMouse(e));
-      if (target != null) {
-        target.touchable.dragged = true;
-        t1.touch_bindings.$indexSet(0, -1, target);
-      }
+      t = X.Contact$fromMouse(e);
+      target = t1.findTouchTarget$1(t);
+      if (target != null)
+        if (target.touchable.touchDown$1(t))
+          t1.touch_bindings.$indexSet(0, -1, target);
       t1.mdown = true;
       return;
     }
@@ -7737,10 +7773,9 @@ var $$ = {};
       t1 = this.this_3;
       t = X.Contact$fromTouch(e);
       target = t1.findTouchTarget$1(t);
-      if (target != null) {
-        target.touchable.dragged = true;
-        t1.touch_bindings.$indexSet(0, t.id, target);
-      }
+      if (target != null)
+        if (target.touchable.touchDown$1(t))
+          t1.touch_bindings.$indexSet(0, t.id, target);
       t1.mdown = true;
       return;
     }
@@ -8038,6 +8073,9 @@ J.fillText$3$x = function(receiver, a0, a1, a2) {
 J.forEach$1$ax = function(receiver, a0) {
   return J.getInterceptor$ax(receiver).forEach$1(receiver, a0);
 };
+J.get$color$x = function(receiver) {
+  return J.getInterceptor$x(receiver).get$color(receiver);
+};
 J.get$data$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$data(receiver);
 };
@@ -8049,6 +8087,9 @@ J.get$hashCode$ = function(receiver) {
 };
 J.get$height$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$height(receiver);
+};
+J.get$id$x = function(receiver) {
+  return J.getInterceptor$x(receiver).get$id(receiver);
 };
 J.get$iterator$ax = function(receiver) {
   return J.getInterceptor$ax(receiver).get$iterator(receiver);
@@ -8064,6 +8105,12 @@ J.get$topLeft$x = function(receiver) {
 };
 J.get$width$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$width(receiver);
+};
+J.get$x$x = function(receiver) {
+  return J.getInterceptor$x(receiver).get$x(receiver);
+};
+J.get$y$x = function(receiver) {
+  return J.getInterceptor$x(receiver).get$y(receiver);
 };
 J.getBoundingClientRect$0$x = function(receiver) {
   return J.getInterceptor$x(receiver).getBoundingClientRect$0(receiver);

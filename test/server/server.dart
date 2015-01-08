@@ -219,28 +219,17 @@ class Box{
     }
   
   void snap (){
-    num width = 100;
-    num leftX = x - width;
-    num rightX = x + width;
     //potential bug
     if (leftNeighbor != null){
-      leftNeighbor.x = leftX;
-      leftNeighbor.y = y;
       leftNeighbor.snapLeft();
     }
     if (rightNeighbor != null){
-      rightNeighbor.x = rightX;
-      rightNeighbor.y = y;
       rightNeighbor.snapRight();
     }
     if (upperNeighbor != null){
-      upperNeighbor.x = leftX;
-      upperNeighbor.y = y;
       upperNeighbor.snapUpper();
     }
     if (lowerNeighbor != null){
-      lowerNeighbor.x = rightX;
-      lowerNeighbor.y = y;
       lowerNeighbor.snaplower();
     }
   }

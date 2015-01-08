@@ -88,6 +88,7 @@ class Box implements Touchable{
   
   Box(this.id, this.x, this.y, this.color){
     document.onMouseUp.listen((e) => myTouchUp(e));
+    document.onTouchEnd.listen((e) => touchUp(e));
     dragged= false;
     img.src = "images/${this.color}.png";
   }
@@ -106,8 +107,8 @@ class Box implements Touchable{
   
 
   bool containsTouch(Contact e) {
-    if(e.touchX > x && e.touchX < x + 50){
-      if(e.touchY > y && e.touchY < y + 50){
+    if(e.touchX > x && e.touchX < x + 100){
+      if(e.touchY > y && e.touchY < y + 100){
         print("true");
         return true;
       }
@@ -117,6 +118,7 @@ class Box implements Touchable{
    
   bool touchDown(Contact e) {
     dragged = true;
+    ws.send("c:${id}, ${color}, ${game.clientID}");
     //dragTimer = new Timer.periodic(const Duration(milliseconds : 80), (timer) => sendDrag(e.touchX, e.touchY));
 //    print(e.touchX);
     return true;
@@ -130,16 +132,16 @@ class Box implements Touchable{
     return true;
   }
    
-  void touchUp(Contact event) {
-    dragged = false;
+  void touchUp(Contact e) {
     try{
           //dragTimer.cancel();
     }
     catch(exception){
           print(exception);
     }
+    dragged = false;
     ws.send("b:${id}, ${color}, ${game.clientID}");
-    print("touchup ${id}");
+    //print("touchup ${id}");
   }
   
   //this is same as touchUp but the touch.dart doesn't seem have an error in touchUp
@@ -151,7 +153,7 @@ class Box implements Touchable{
       print(exception);
     }
     dragged = false;
-    pieceLocation();
+
     ws.send("b:${id}, ${color}, ${game.clientID}");
 //    print("touchup ${id}");
   }
@@ -292,6 +294,9 @@ class State{
     }
     lastLength=myBoxesLength;
 
+    for(Box box in myBoxes){
+      box.pieceLocation();
+    }
   }
   
   
