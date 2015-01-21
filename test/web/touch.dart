@@ -124,6 +124,7 @@ class TouchManager {
   void _touchDown(TouchEvent evt) {
     Contact t = new Contact.fromTouch(evt);
     TouchBinding target = findTouchTarget(t);
+
     if (target != null) {
       if (target.touchDown(t)) {
         touch_bindings[t.id] = target;
@@ -145,12 +146,14 @@ class TouchManager {
       if (touch_bindings[i] != null) touchExists = true;
     }
     if (touchExists == false) touch_bindings.clear;
+
   }
    
    
   void _touchDrag(TouchEvent evt) {
     Contact t = new Contact.fromTouch(evt);
     TouchBinding target = touch_bindings[t.id];
+    
     if (target != null) {
       target.touchDrag(t);
     } else {
@@ -304,10 +307,12 @@ class Contact {
 
   
   Contact.fromTouch(TouchEvent touch) {
-//    id = touch.identifier;
-    touchX = touch.page.x.toDouble();
-    touchY = touch.page.y.toDouble();
-    finger = true;
+    touch.touches.forEach((touch) {
+      var _id = touch.identifier;
+      touchX = touch.page.x.toDouble();
+      touchY = touch.page.y.toDouble();
+      finger = true;
+    });
   }
   
   
