@@ -78,8 +78,8 @@ class Box implements Touchable{
   int imageWidth;
   int imageHeight;
   
-  int width;
-  int height;
+  num touched_x_offset;
+  num touched_y_offset;
   
   ImageElement img = new ImageElement();
   
@@ -119,8 +119,8 @@ class Box implements Touchable{
 
 
   bool containsTouch(Contact e) {
-    if((e.touchX > x && e.touchX  < x +100) && 
-      (e.touchY > y && e.touchY < y + 100)){
+    if((e.touchX > x && e.touchX  < x +img.width) && 
+      (e.touchY > y && e.touchY < y + img.height)){
         return true;
       }
     return false;
@@ -128,6 +128,8 @@ class Box implements Touchable{
 
   bool touchDown(Contact e) {
     dragged = true;
+    touched_x_offset=x-e.touchX;
+    touched_y_offset=y-e.touchY;
     //dragTimer = new Timer.periodic(const Duration(milliseconds : 80), (timer) => sendDrag(e.touchX, e.touchY));
 //    print(e.touchX);
     return true;
@@ -173,7 +175,7 @@ class Box implements Touchable{
     //print('touchdrag');
     //since touchUp has issues it impacts touchDrag so have extra bool to makes sure this are being dragged
     if(dragged){
-      sendDrag(e.touchX, e.touchY);
+      sendDrag(touched_x_offset+ e.touchX,touched_y_offset+ e.touchY);
       //print(e.touchX);
     }
   }
@@ -182,17 +184,21 @@ class Box implements Touchable{
 
 
 
-  void pieceLocation (){
+  void pieceLocation ()//small bug. One must drag the correct box in order to assign neighbors.
+  //for example. 1 and 2 are connected. 1 and 3 should be neighbors. User drags 2 and puts
+  //1 on top of 3. 1 and 3 should be combined but they;re not. Because this program only
+  //checks for 2.
+  {
     Box box=this;
     imageWidth=box.img.width;
     imageHeight=box.img.height;
       //When the boxes touch each other
       //assign the Neighbors according to the predetermined pattern.
       if (box.rightBuddy != null &&box.rightNeighbor==null){
-        if (box.rightBuddy.x + 10 + imageWidth >= box.x &&
-            box.rightBuddy.y + 10 + imageHeight >= box.y &&
-            box.rightBuddy.x + 10  <= box.x + imageWidth + 20 &&
-            box.rightBuddy.y + 10  <= box.y + 20 + imageHeight){
+        if (box.rightBuddy.x + 10 + imageWidth/2 >= box.x &&
+            box.rightBuddy.y + 10 + imageHeight/2 >= box.y &&
+            box.rightBuddy.x + 10  <= box.x + imageWidth/2 + 20 &&
+            box.rightBuddy.y + 10  <= box.y + 20 + imageHeight/2){
            box.rightNeighbor = box.rightBuddy;
            box.rightBuddy.leftNeighbor = box;
            print ('rightneighbors!');
@@ -200,10 +206,10 @@ class Box implements Touchable{
         }
       }
       if (box.leftBuddy != null && box.leftNeighbor==null){
-        if (box.leftBuddy.x + 10 + imageWidth >= box.x &&
-            box.leftBuddy.y + 10 + imageHeight >= box.y &&
-            box.leftBuddy.x + 10  <= box.x + 20 + imageWidth &&
-            box.leftBuddy.y + 10  <= box.y + 20 + imageHeight){
+        if (box.leftBuddy.x + 10 + imageWidth/2 >= box.x &&
+            box.leftBuddy.y + 10 + imageHeight/2 >= box.y &&
+            box.leftBuddy.x + 10  <= box.x + 20 + imageWidth/2 &&
+            box.leftBuddy.y + 10  <= box.y + 20 + imageHeight/2){
            box.leftNeighbor = box.leftBuddy;
            box.leftBuddy.rightNeighbor = box;
            print ('left neighbors!');
@@ -211,10 +217,10 @@ class Box implements Touchable{
         }
       }
       if (box.upperBuddy != null && box.upperNeighbor==null){
-        if (box.upperBuddy.x + 10 + imageWidth >= box.x &&
-            box.upperBuddy.y + 10 + imageHeight >= box.y &&
-            box.upperBuddy.x + 10 <= box.x + 20 + imageWidth &&
-            box.upperBuddy.y + 10 <= box.y + 20 + imageHeight){
+        if (box.upperBuddy.x + 10 + imageWidth/2 >= box.x &&
+            box.upperBuddy.y + 10 + imageHeight/2 >= box.y &&
+            box.upperBuddy.x + 10 <= box.x + 20 + imageWidth/2 &&
+            box.upperBuddy.y + 10 <= box.y + 20 + imageHeight/2){
            box.upperNeighbor = box.upperBuddy;
            box.upperBuddy.lowerNeighbor = box;
            print ('upper neighbors!');
@@ -222,10 +228,10 @@ class Box implements Touchable{
         }
       }
       if (box.lowerBuddy != null && box.lowerNeighbor==null){
-        if (box.lowerBuddy.x + 10 + imageWidth >= box.x &&
-            box.lowerBuddy.y + 10 + imageHeight >= box.y &&
-            box.lowerBuddy.x + 10 <= box.x + 20 + imageWidth &&
-            box.lowerBuddy.y + 10 <= box.y + 20 + imageHeight){
+        if (box.lowerBuddy.x + 10 + imageWidth/2 >= box.x &&
+            box.lowerBuddy.y + 10 + imageHeight/2 >= box.y &&
+            box.lowerBuddy.x + 10 <= box.x + 20 + imageWidth/2 &&
+            box.lowerBuddy.y + 10 <= box.y + 20 + imageHeight/2){
            box.lowerNeighbor = box.lowerBuddy;
            box.lowerBuddy.upperNeighbor = box;
            print ('lower neighbors!');
@@ -323,8 +329,6 @@ class State{
     //if new box, create new object and add to touchables
     if(found == false){
       Box temp = new Box(id, x, y, color);
-      temp.width = 50;
-      temp.height = 50;
       boxGame.touchables.add(temp);
       myBoxes.add(temp);
     }
@@ -470,7 +474,10 @@ class Game extends TouchLayer{
       String tempMsg = data.substring(2);
       List<String> temp = tempMsg.split(",");
       clientID = temp[0];
+      if (trialNum!=temp[1])
+        myState=new State(this);
       trialNum = temp[1];
+      
     }
   }
 }
